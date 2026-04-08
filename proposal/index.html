@@ -29,7 +29,7 @@
 		<div class="container">
 		<!-- temporary title: TBD (need descriptive title)-->
 		 <!--Possible Title: Volumetric Path Tracing for Realistic Light Transport-->
-		<h1>Final Project Proposal: Volumetric Scattering</h1>
+		<h1>Final Project Proposal: Comparing Bidirectional and Unidirectional Volumetric Path Tracing For Realistic Light Transport</h1>
 		<div style="text-align: center;">Team Members: Nohl Abdelhadi, Jaewon Chang, Heidy Gonzalez, Brendan Reyes</div>
 
 		<br>
@@ -43,8 +43,10 @@
 		<h2>Summary</h2>
 
 		<p>
-			This project we plan to extend a basic path tracer to model volumetric light interactions—such as fog, mist, and haze—by incorporating scattering and absorption within the space between surfaces, enabling more realistic effects like softer shadows and visible light beams. 
-			The team will compare standard path tracing with more advanced methods (like bidirectional approaches) in terms of runtime and visual quality across different scenes. If time permits, we aim to build an interactive GUI that allows real-time exploration of the rendered environments.
+			In this project, we plan to extend our path tracer to support volumetric scattering and render these effects using Bidirectional Path Tracing. 
+			To implement volumetric scattering we will use model angular scattering and Beer-Lambert's law to calculate light distribution and absorption caused by particles,
+			allowing us to model light rays through participating media such as smoke, fog, and haze, where light can scatter before reaching a surface - rendering realistic effects. 
+			Our project will explore how BDPT captures the volumetric lighting effects and compare its performance and visual quality against the path tracing approach implemented in homework 3.
 		</p>
 
 		<h2>Problem Description</h2>
@@ -53,6 +55,24 @@
 			1. Why it is important
 			2. Where it is challenging
 			3. Give us a general idea on how you are going to solve it.-->
+
+		<p>
+			So far in class, we've worked with surface-based path tracing methods that use Monte Carlo estimation to model light transport through a scene. 
+			While this approach excels for rendering illumination on objects or surfaces, it cannot accurately capture volumetric effects such as beams from stagelights. 
+			These effects arise because light not only interacts with surfaces, but also with the participating medium in the space between them, where particles in the real-world scatter and absorb light before reaching a surface.
+		</p>
+		<p>
+			This is an important limitation because many real-world phenomena depend on volumetric light transport, and the standard surface-based path tracing method would incorrectly render these scenes. 
+			To render these effects, we need to extend the surface-only formulation so rays may undergo scattering events within a volume, which makes our modeling task much more complex. 
+			In particular, we need to determine how to sample scattering events in space and also account for any absorption or attenuation through a medium - doing all of this efficiently so rendering these effects is practical.
+		</p>
+		<p>
+			To address this problem, we plan to extend the path tracer implemented in Homework 3 to support volumetric scattering and implement Bidirectional Path Tracing (BDPT) as our main rendering algorithm. 
+			Unlike standard path tracing which builds paths only from the camera, BDPT constructs 2-way paths from both the camera and light source and connects them to form paths. 
+			We will also change our sampling method to consider the intersection of light rays with particles and how this can affect light distribution within our scenes. 
+			At minimum, we plan to implement volumetric scattering and run evaluations on image quality, convergence, and runtime. 
+			If we are ahead of schedule, we hope to incorporate and rework methods from lectures such as russian roulette or adaptive sampling to be compatible with BDPT.
+		</p>
 
 		<h2>Goals and Deliverables</h2>
 		<!--IMPORTANT :
@@ -68,6 +88,21 @@
 			- Define how you will measure the quality / performance of your system (e.g. graphs showing speedup, or quantifying accuracy).
 			- What questions do you plan to answer?
 			-->
+
+			<p>
+				Ultimately, we plan to deliver a complete implementation and an in-depth explanation of a bidirectional path tracing algorithm, and compare it against the global illumination function from homework 3 across various scenes containing light scattering objects. 
+				In addition to standard surface light transport, we plan to investigate scenes with participating media, where light scatters in a medium before reaching a surface. 
+				This will allow us to study how BDPT handles complex lighting effects like volumetric scattering in fog-like, smoke-like or illumination environments (e.g. stagelights). 
+				We will evaluate the effects of varying the samples per pixel, number of light rays, bounce depth and accumulations, and other various parameters used to render scenes from the assignment. 
+				We also plan to discuss whether techniques like Russian Roulette or adaptive sampling can improve the rendering times without compromising visual quality. 
+				Our evaluation will focus on visual realism (capturing real-world interaction between light and atmospheric particles), convergence behavior, rendering times, and memory usage across different scenes.
+			</p>
+			<p>
+				For this project, we plan to answer whether BDPT provides advantages over standard path tracing for complex scenes. 
+				We also want to answer the question of how to keep BDPT useful for real-time rendering applications while maintaining its intended effects on most scenes. 
+				If time permits, we hope to build a modified interactive GUI that supports our BDPT renderer. 
+				Ideally, we would like to keep most of the implemented features from homework 3, but we vision this modified version of the GUI will path trace in close to real time and allow the user to move and zoom the camera.
+			</p>
 
 		<h2>Schedule</h2>
 		<!--organize and plan the tasks and subtasks that your team will execute.-->
@@ -119,22 +154,35 @@
 				</tr>
 				<tr>
 					<td>2 (4/13-4/17)</td>
-					<td>TBD</td>
+					<td>
+						<li>Create scenes with light scattering objects</li>
+						<li>(Fog, Mist, Fire)</li>
+						<li>Build BDPT Algorithm</li>
+						<li>Improve volumetric renderer from last week as seen necessary</li>
+						<li>Do a first set of rendered images</li>
+					</td>
 					<td>TBD</td>
 				</tr>
 				<tr>
 					<td>3 (4/20 - 4/24)</td>
-					<td>TBD</td>
+					<td>
+						<li>Report last week's progress and final images</li>
+						<li>Experiment with adjusting light rays, samples per pixel, bounce depths</li>
+						<li>If time permits: </li>
+						<li>Incorporate Russian Roulette, Adaptive Sampling, or other runtime/memory reduction methods</li>
+					</td>
 					<td>Milestone Report Due 4/20</td>
 				</tr>
 				<tr>
 					<td>4 (4/27 - 5/1)</td>
-					<td>TBD</td>
-					<td>TBD</td>
+					<td>
+						<li>Prepare webpage for submission and presentation</li>
+					</td>
+					<td></td>
 				</tr>
 				<tr>
 					<td>5 (5/4 - 5/5)</td>
-					<td>TBD</td>
+					<td>Submit and Present</td>
 					<td>
 						<li>Final Submission Due 5/4</li>
 						<li>Final Presentation 5/5</li>
