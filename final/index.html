@@ -177,11 +177,11 @@
 		It also does not account for how likely each path construction strategy was, leading to scenes with fairly unrealistic lighting.
 		<br>
 		One idea we had was to mitigate this issue was to replace the arbitrary brightness term with Multiple Importance Sampling (MIS), 
-		which assigns each sampling strategy a fraction of the contribution based on its probability of generating the same transport path: \( weight = current_strategy_pdf / sum(all_strategy_pdfs) \).
+		which assigns each sampling strategy a fraction of the contribution based on its probability of generating the same transport path: \( <var>weight</var> = <var>current_strategy_pdf</var> / sum(<var>all_strategy_pdfs</var>) \).
 		This was intended to reduce overcounting between different BDPT connection strategies and downweight poor sampling strategies, improving variance compared to a fixed manual scale.
 		<br>
 		Another issue was using the BDPT alongside the Volumetric Scatterer. 
-		The original BDPT hardcodes its surface-to-surface geometry term:  \( G = cosL * cosC / distance<sup>2</sup> \)
+		The original BDPT hardcodes its surface-to-surface geometry term:  \( G = \cos L \cdot \cos C \,/\, \text{distance}^2 \)
 
 
 		<h3>Lessons Learned</h3>
