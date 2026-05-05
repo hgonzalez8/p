@@ -194,7 +194,7 @@
 		This was intended to reduce overcounting between different BDPT connection strategies and downweight poor sampling strategies, improving variance compared to a fixed manual scale.
 		<br>
 		Another issue was using the BDPT alongside the Volumetric Scatterer. 
-		The original BDPT hardcodes its surface-to-surface geometry term:  \( G = \cos L \cdot \cos C \,/\, \text{distance}^2 \)
+		The original BDPT hardcodes its surface-to-surface geometry term:  \( G = \frac{\cos L \cdot \cos C}{\text{distance}^2} \)
 		<br>
 		When used with the volumetric scatterer which assumes all vertices are surfaces with valid normals, we end up with bright scenes with no fog. 
 		To handle this, our modified BDPT adds medium-aware geometry and scattering helpers. 
