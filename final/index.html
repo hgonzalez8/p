@@ -89,6 +89,16 @@
 		Link to Github repository for Volumetric Scattering: <a href="https://github.com/NohlAaron/cs184-finalproject-sp26">https://github.com/NohlAaron/cs184-finalproject-sp26</a>
 
 
+		<h3>Video Link</h3>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/MSLjpgbtmik?si=RDYndOKFL0pOwtbT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		<a href="https://youtu.be/MSLjpgbtmik?si=1BQybitjucD5Z1pf">https://youtu.be/MSLjpgbtmik?si=1BQybitjucD5Z1pf</a>
+
+		<br>
+
+		Link to slides: <a href="https://docs.google.com/presentation/d/1zRzEfqGVHTi6b1mD8CwRXDk4IiCcoclW8K-KvJ8CSEY/edit?usp=sharing">https://docs.google.com/presentation/d/1zRzEfqGVHTi6b1mD8CwRXDk4IiCcoclW8K-KvJ8CSEY/edit?usp=sharing</a>
+
+		<br>
+
 		<h2>Summary</h2>
 
 		For the Final Project for CS184, our group wanted to extend upon the illumination and raytracing methods built previously in Homework 3. 
@@ -178,9 +188,9 @@
 		<br>
 		One idea we had was to mitigate this issue was to replace the arbitrary brightness term with Multiple Importance Sampling (MIS), 
 		which assigns each sampling strategy a fraction of the contribution based on its probability of generating the same transport path: 
-		<br>
 		<!--var>weight</var> = <var>current_strategy_pdf</var> / sum(<var>all_strategy_pdfs</var>).-->
 		\( \text{weight} = \frac{\text{current_strategy_pdf}}{\sum \text{all_strategy_pdfs}} \)
+		<br>
 		This was intended to reduce overcounting between different BDPT connection strategies and downweight poor sampling strategies, improving variance compared to a fixed manual scale.
 		<br>
 		Another issue was using the BDPT alongside the Volumetric Scatterer. 
@@ -258,10 +268,6 @@
 			  </tr>
 			</table>
 		</div>
-
-		<h3>Video Link</h3>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/MSLjpgbtmik?si=RDYndOKFL0pOwtbT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-		<a href="https://youtu.be/MSLjpgbtmik?si=1BQybitjucD5Z1pf">https://youtu.be/MSLjpgbtmik?si=1BQybitjucD5Z1pf</a>
 
 		<h3>References</h3>
 		<ul>
