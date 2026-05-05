@@ -177,7 +177,10 @@
 		It also does not account for how likely each path construction strategy was, leading to scenes with fairly unrealistic lighting.
 		<br>
 		One idea we had was to mitigate this issue was to replace the arbitrary brightness term with Multiple Importance Sampling (MIS), 
-		which assigns each sampling strategy a fraction of the contribution based on its probability of generating the same transport path: <var>weight</var> = <var>current_strategy_pdf</var> / sum(<var>all_strategy_pdfs</var>).
+		which assigns each sampling strategy a fraction of the contribution based on its probability of generating the same transport path: 
+		<br>
+		<!--var>weight</var> = <var>current_strategy_pdf</var> / sum(<var>all_strategy_pdfs</var>).-->
+		\( \text{weight} = \frac{\text{current\_strategy\_pdf}}{\sum \text{all\_strategy\_pdfs}} \)
 		This was intended to reduce overcounting between different BDPT connection strategies and downweight poor sampling strategies, improving variance compared to a fixed manual scale.
 		<br>
 		Another issue was using the BDPT alongside the Volumetric Scatterer. 
