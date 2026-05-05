@@ -185,11 +185,20 @@
 		<br>
 		Another issue was using the BDPT alongside the Volumetric Scatterer. 
 		The original BDPT hardcodes its surface-to-surface geometry term:  \( G = \cos L \cdot \cos C \,/\, \text{distance}^2 \)
+		<br>
+		When used with the volumetric scatterer which assumes all vertices are surfaces with valid normals, we end up with bright scenes with no fog. 
+		To handle this, our modified BDPT adds medium-aware geometry and scattering helpers. 
+		Surface vertices use BSDFs and cosine terms, while medium vertices use the medium phase function and a geometry term appropriate for points in a participating medium.
+		<a href="http://luthuli.cs.uiuc.edu/~daf/courses/rendering/papers/lafortune96rendering.pdf">http://luthuli.cs.uiuc.edu/~daf/courses/rendering/papers/lafortune96rendering.pdf</a>
+
 
 
 		<h3>Lessons Learned</h3>
-		We learned how to realistically simulate light transport through a medium using various methods to sample and distribute light. 
-		Through this we gained a better understanding of how light rays are scattered and how we could manipulate them to add caustics such as fog, haze, and dust.
+		We learned how to realistically simulate light transport through a medium using physics and various methods to sample and distribute light. 
+		Through this we gained a better understanding of how light rays are scattered and how we could manipulate them to add caustics such as fog, haze, and dust. 
+		Using the Henyey-Greenstein phase function gave our pathing more depth making our renders better. 
+		Implementing BDPT taught us the sensitivity of parameters and the importance of weights to mitigate noise and uneven sampling.
+
 
 		<h3>Results</h3>
 		<div style="display: flex; flex-direction: column; align-items: center;">
